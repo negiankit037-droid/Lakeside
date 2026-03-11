@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LakeSide Tour & Travels | Explore Uttarakhand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#0ea5e9',
+                            accent: '#f59e0b',
+                            light: '#f0f9ff',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-200 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 flex justify-between items-center glass-card border-b-0">
+        <div class="flex items-center gap-2">
+            <i class="fas fa-mountain text-brand-primary text-2xl"></i>
+            <span class="text-2xl font-serif font-bold text-white tracking-wide">LakeSide<span class="text-brand-primary">.</span></span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 items-center font-medium text-sm uppercase tracking-wider">
+            <a href="#home" class="hover:text-brand-primary transition-colors">Home</a>
+            <a href="#destinations" class="hover:text-brand-primary transition-colors">Destinations</a>
+            <a href="#why-us" class="hover:text-brand-primary transition-colors">Why Us</a>
+            <a href="#about" class="hover:text-brand-primary transition-colors">About</a>
+            <a href="#contact" class="px-6 py-2 bg-brand-primary hover:bg-sky-600 text-white rounded-full transition-all shadow-lg shadow-sky-500/30">Contact Us</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark/95 z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center gap-8 text-xl font-serif">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-brand-primary"><i class="fas fa-times"></i></button>
+        <a href="#home" class="mobile-link hover:text-brand-primary">Home</a>
+        <a href="#destinations" class="mobile-link hover:text-brand-primary">Destinations</a>
+        <a href="#why-us" class="mobile-link hover:text-brand-primary">Why Us</a>
+        <a href="#about" class="mobile-link hover:text-brand-primary">About</a>
+        <a href="#contact" class="mobile-link hover:text-brand-primary">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center hero-bg overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div class="mb-4 inline-block px-4 py-1 rounded-full border border-brand-primary/30 bg-brand-primary/10 backdrop-blur-sm text-brand-primary text-sm font-semibold tracking-widest uppercase animate-fade-in-up" style="animation-delay: 0.1s;">
+                Welcome to the Himalayas
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight animate-fade-in-up" style="animation-delay: 0.3s;">
+                LakeSide <br/><span class="text-gradient italic">Tour & Travels</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-10 font-light tracking-wide animate-fade-in-up" style="animation-delay: 0.5s;">
+                Explore Uttarakhand with Trusted Local Experts
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.7s;">
+                <a href="https://wa.me/918859665559?text=Hi%20LakeSide%20Tour%20%26%20Travels,%20I%20am%20interested%20in%20booking%20a%20trip." target="_blank" class="group relative px-8 py-4 bg-green-600 hover:bg-green-500 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(22,163,74,0.5)] flex items-center justify-center gap-3 overflow-hidden">
+                    <span class="relative z-10"><i class="fab fa-whatsapp text-2xl"></i> Book on WhatsApp</span>
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </a>
+                
+                <a href="tel:+918859665559" class="group px-8 py-4 bg-transparent border-2 border-white/30 hover:border-white text-white rounded-full font-bold text-lg transition-all hover:bg-white/10 flex items-center justify-center gap-3 backdrop-blur-sm">
+                    <i class="fas fa-phone-alt animate-pulse"></i> Call Now
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="py-24 px-6 lg:px-12 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-primary font-bold tracking-widest uppercase mb-2">Discover</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">Popular Destinations</h3>
+                <div class="w-24 h-1 bg-brand-primary mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Nainital -->
+                <div class="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer reveal">
+                    <img src="nainital.jpg" alt="Nainital" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <h4 class="text-3xl font-serif font-bold text-white mb-1">Nainital</h4>
+                                <p class="text-brand-primary text-sm font-bold uppercase tracking-wider">The Lake City</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-2 rounded-full">
+                                <i class="fas fa-water text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 line-clamp-2">
+                            Experience the serene beauty of Naini Lake, surrounded by lush green hills and colonial architecture.
+                        </p>
+                        <a href="https://wa.me/918859665559?text=Hi,%20I%20want%20to%20book%20a%20trip%20to%20Nainital." target="_blank" class="inline-flex items-center gap-2 text-white font-bold hover:text-brand-primary transition-colors">
+                            Book Now <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Jim Corbett -->
+                <div class="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer reveal" style="transition-delay: 100ms;">
+                    <img src="jim.jpg" alt="Jim Corbett" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <h4 class="text-3xl font-serif font-bold text-white mb-1">Jim Corbett</h4>
+                                <p class="text-brand-primary text-sm font-bold uppercase tracking-wider">Wildlife Safari</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-2 rounded-full">
+                                <i class="fas fa-paw text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 line-clamp-2">
+                            India's oldest national park. Spot the Royal Bengal Tiger and diverse wildlife in their natural habitat.
+                        </p>
+                        <a href="https://wa.me/918859665559?text=Hi,%20I%20want%20to%20book%20a%20Jim%20Corbett%20Safari." target="_blank" class="inline-flex items-center gap-2 text-white font-bold hover:text-brand-primary transition-colors">
+                            Book Now <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Char Dham -->
+                <div class="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer reveal" style="transition-delay: 200ms;">
+                    <img src="dham.jpg" alt="Char Dham" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <h4 class="text-3xl font-serif font-bold text-white mb-1">Char Dham</h4>
+                                <p class="text-brand-primary text-sm font-bold uppercase tracking-wider">Spiritual Journey</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-2 rounded-full">
+                                <i class="fas fa-om text-white text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-300 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 line-clamp-2">
+                            A pilgrimage to the four sacred shrines: Yamunotri, Gangotri, Kedarnath, and Badrinath.
+                        </p>
+                        <a href="https://wa.me/918859665559?text=Hi,%20I%20want%20to%20book%20a%20Char%20Dham%20Yatra." target="_blank" class="inline-flex items-center gap-2 text-white font-bold hover:text-brand-primary transition-colors">
+                            Book Now <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#0ea5e9 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/3 reveal">
+                    <h2 class="text-brand-primary font-bold tracking-widest uppercase mb-2">Our Expertise</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Why Choose LakeSide?</h3>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        We don't just plan trips; we curate experiences. With deep roots in Uttarakhand, we offer an authentic journey through the Himalayas.
+                    </p>
+                    <a href="#contact" class="inline-block px-8 py-3 border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all rounded-full font-semibold">
+                        Start Your Journey
+                    </a>
+                </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Expert Local Guides</h4>
+                        <p class="text-slate-400 text-sm">Native experts who know every hidden trail and local legend.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal" style="transition-delay: 100ms;">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">All India Tours</h4>
+                        <p class="text-slate-400 text-sm">From Kashmir to Kanyakumari, we cover the entire subcontinent.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal" style="transition-delay: 200ms;">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">24/7 Customer Support</h4>
+                        <p class="text-slate-400 text-sm">Round the clock assistance to ensure your peace of mind.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal" style="transition-delay: 300ms;">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">15+ Vehicles</h4>
+                        <p class="text-slate-400 text-sm">A fleet of well-maintained cars, SUVs, and tempo travelers.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal" style="transition-delay: 400ms;">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">10,000+ Happy Clients</h4>
+                        <p class="text-slate-400 text-sm">A legacy of satisfied travelers and memorable journeys.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:border-brand-primary/50 transition-all hover:-translate-y-1 reveal" style="transition-delay: 500ms;">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-lg flex items-center justify-center text-brand-primary text-2xl mb-4">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">10+ Years Experience</h4>
+                        <p class="text-slate-400 text-sm">Decade of expertise in crafting perfect Himalayan getaways.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-24 px-6 lg:px-12 bg-brand-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative reveal">
+                    <div class="absolute -inset-4 bg-brand-primary/20 rounded-full blur-3xl"></div>
+                    <img src="https://images.unsplash.com/photo-1518182170546-0766bc6f9213?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About LakeSide" class="relative rounded-2xl shadow-2xl border border-slate-700 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="absolute -bottom-6 -right-6 bg-slate-800 p-6 rounded-xl border border-slate-700 shadow-xl hidden md:block">
+                        <div class="flex items-center gap-4">
+                            <div class="text-4xl font-bold text-brand-primary">10+</div>
+                            <div class="text-sm text-slate-300 leading-tight">Years of<br>Excellence</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 reveal">
+                    <h2 class="text-brand-primary font-bold tracking-widest uppercase mb-2">About Us</h2>
+                    <h3 class="text-4xl font-serif font-bold text-white mb-6">Your Trusted Travel Partner in Kathgodam</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        LakeSide Tour & Travels is a premier travel agency based in the heart of Kathgodam, Uttarakhand. We specialize in curating unforgettable journeys through the majestic Himalayas.
+                    </p>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
+                        Whether it's the tranquil lakes of Nainital, the thrilling wildlife of Jim Corbett, or the spiritual heights of Char Dham, our experienced drivers and local guides ensure a safe, comfortable, and authentic experience.
+                    </p>
+                    
+                    <div class="flex gap-4">
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <i class="fas fa-check-circle text-brand-primary"></i> Licensed Operator
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <i class="fas fa-check-circle text-brand-primary"></i> Best Price Guarantee
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-brand-primary font-bold tracking-widest uppercase mb-2">Get in Touch</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">Plan Your Trip Today</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-1 space-y-6 reveal">
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4 hover:border-brand-primary transition-colors">
+                        <div class="w-12 h-12 bg-green-600/20 rounded-full flex items-center justify-center text-green-500 text-xl shrink-0">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">WhatsApp Booking</h4>
+                            <a href="https://wa.me/918859665559" target="_blank" class="text-slate-400 hover:text-white transition-colors">+91 88596 65559</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4 hover:border-brand-primary transition-colors">
+                        <div class="w-12 h-12 bg-brand-primary/20 rounded-full flex items-center justify-center text-brand-primary text-xl shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Phone</h4>
+                            <a href="tel:+918859665559" class="text-slate-400 hover:text-white transition-colors">+91 88596 65559</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4 hover:border-brand-primary transition-colors">
+                        <div class="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center text-red-500 text-xl shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Email</h4>
+                            <a href="mailto:sa.mad231@gmail.com" class="text-slate-400 hover:text-white transition-colors break-all">sa.mad231@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4 hover:border-brand-primary transition-colors">
+                        <div class="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-500 text-xl shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Office Address</h4>
+                            <p class="text-slate-400 text-sm mt-1">
+                                LakeSide Tour and Travels,<br>
+                                Bareilly - Nainital Rd,<br>
+                                Kathgodam, Haldwani,<br>
+                                Harigarh Dalipsingh,<br>
+                                Uttarakhand 263126
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 h-[400px] lg:h-auto rounded-xl overflow-hidden border border-slate-700 shadow-2xl reveal" style="transition-delay: 200ms;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3476.300123456789!2d79.5123!3d29.2134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDEyJzQ4LjIiTiA3OcKwMzAnNDQuMyJF!5e0!3m2!1sen!2sin!4v1234567890" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: invert(90%) hue-rotate(180deg);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-mountain text-brand-primary text-xl"></i>
+                <span class="text-xl font-serif font-bold text-white">LakeSide<span class="text-brand-primary">.</span></span>
+            </div>
+            <div class="text-slate-500 text-sm text-center md:text-right">
+                <p>&copy; 2023 LakeSide Tour & Travels. All rights reserved.</p>
+                <p class="mt-1">Designed with <i class="fas fa-heart text-red-500 mx-1"></i> for Uttarakhand</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918859665559" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark/90', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-brand-dark/90', 'shadow-lg');
+                navbar.classList.remove('py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
